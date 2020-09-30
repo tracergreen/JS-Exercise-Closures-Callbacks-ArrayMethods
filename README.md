@@ -42,14 +42,15 @@ Find the file `index.js` and complete the tasks until your tests are passing.
 Edit the `ReadMe` file with your answers.
 
 1. In your own words, define closure (1-2 sentences).
+  A closure is a function which has access to it's outer scope after the outer function has returned. Closures can remember and access arguments and variables even after the function is finished.
 2. Study the following code, then answer the questions below.
 
 ```js
 function personalDice(name){
-  return function(){
+  return function(){ //1. closure is here - you cna tell because the function is running inside of a function
       // generate random number between 1 and 6
     const newRoll = Math.floor(Math.random() * 6);
-    console.log(`${name} rolled a ${newRoll}`)
+    console.log(`${name} rolled a ${newRoll}`) 
   }
 }
 
@@ -62,7 +63,7 @@ dansRoll();
 dansRoll();
 ```
 
-a. Where is closure used in this code? How can you tell?
+a. Where is closure used in this code? How can you tell? (see answers in code ^)
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
 c. What is the lexical scope of `newRoll`? 
 
