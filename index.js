@@ -79,7 +79,7 @@ finalScore(inning, 9) might return:
 function finalScore(callback, numOfInnings){
   let home = 0;
   let away = 0;
-  for (let i = 1; i < numOfInnings; i++) {
+  for (let i = 1; i <= numOfInnings; i++) {
     home += callback();
     away += callback();
   }
@@ -114,8 +114,31 @@ and returns the score at each pont in the game, like so:
 
 Final Score: awayTeam - homeTeam */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function getOrdLabel(num) {
+  if (num === 1) {
+    return num + "st";
+  } else if (num === 2) {
+    return num + "nd";
+  } else if (num === 3) {
+    return num + "rd";
+  } else {
+    return num + "th";
+  }
 }
 
+function scoreboard(callback, callback2, numOfInnings){
+  let home = 0;
+  let away = 0;
+  for (let i = 1; i <= numOfInnings; i++) {
+    home += callback();
+    away += callback();
+    console.log(`${getOrdLabel(i)} inning: Away: ${away} - Home: ${home}`);
+  }
+  return {
+    "Home": home,
+    "Away": away,
+  }
+    return callback2();
+}
 
+scoreboard(inning, finalScore, 9);     
