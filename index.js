@@ -26,11 +26,11 @@ function processFirstItem(stringList, callback) {
 /* Task 1: `counterMaker`
  * Study the code for counter1 and counter2. Answer the questions below.
  * 
- * 1. What is the difference between counter1 and counter2?
+ * 1. What is the difference between counter1 and counter2? // counter2 will reset each time the function is called, whereas counter1 will store the memory of the function contained within it due to closure.
  * 
- * 2. Which of the two uses a closure? How can you tell?
+ * 2. Which of the two uses a closure? How can you tell? // counter1 code has a closure of count++ reaching out to the "let count = 0;", count is accessable from the inside of this closure to the outter function counterMaker.
  * 
- * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
+ * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? Since this is a counter, you need memory for your count, so counter1 code seems like a better option. If you were just trying to generate the number 1 over and over, you would want counter2.
  *
 */
 
@@ -56,11 +56,11 @@ function counter2() {
 
 Write a function called `inning` that generates a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(/*Code Here*/){
-
-    /*Code Here*/
-
+function inning(){
+  let score = Math.floor(Math.random() * 3);
+  return score;
 }
+inning();
 
 /* Task 3: finalScore()
 
@@ -76,11 +76,21 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(/*code Here*/){
-
-  /*Code Here*/
-
+function finalScore(callback, numOfInnings){
+  let home = 0;
+  let away = 0;
+  for (let i = 1; i <= numOfInnings; i++) {
+    home += callback();
+    away += callback();
+  }
+  return {
+    "Home": home,
+    "Away": away,
+  }
 }
+
+finalScore(inning, 9);
+
 
 /* Task 4: 
 
@@ -104,8 +114,31 @@ and returns the score at each pont in the game, like so:
 
 Final Score: awayTeam - homeTeam */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function getOrdLabel(num) {
+  if (num === 1) {
+    return num + "st";
+  } else if (num === 2) {
+    return num + "nd";
+  } else if (num === 3) {
+    return num + "rd";
+  } else {
+    return num + "th";
+  }
 }
 
+function scoreboard(callback, callback2, numOfInnings){
+  let home = 0;
+  let away = 0;
+  for (let i = 1; i <= numOfInnings; i++) {
+    home += callback();
+    away += callback();
+    console.log(`${getOrdLabel(i)} inning: Away: ${away} - Home: ${home}`);
+  }
+  return {
+    "Home": home,
+    "Away": away,
+  }
+    return callback2();
+}
 
+scoreboard(inning, finalScore, 9);     

@@ -42,6 +42,7 @@ Find the file `index.js` and complete the tasks until your tests are passing.
 Edit the `ReadMe` file with your answers.
 
 1. In your own words, define closure (1-2 sentences).
+  A closure is a function bundled together with references to the lexical environment surrounding it. Closure gives access to an outer function's scope from an inner function. 
 2. Study the following code, then answer the questions below.
 
 ```js
@@ -49,7 +50,7 @@ function personalDice(name){
   return function(){
       // generate random number between 1 and 6
     const newRoll = Math.floor(Math.random() * 6);
-    console.log(`${name} rolled a ${newRoll}`)
+    console.log(`${name} rolled a ${newRoll}`) 
   }
 }
 
@@ -62,9 +63,9 @@ dansRoll();
 dansRoll();
 ```
 
-a. Where is closure used in this code? How can you tell?
-b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
-c. What is the lexical scope of `newRoll`? 
+a. Where is closure used in this code? How can you tell? // The "return function()" within the personalDice function is a closure within a function (personalizeDice).
+b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change? These calls of functions are the same but the second call allows for memory to return the first and second roll.
+c. What is the lexical scope of `newRoll`? outer functions scope & local scope meaning it can reach all the way out to global scope from the inside.
 
 ### Task 3 - Stretch Goals
 
@@ -104,6 +105,6 @@ addSix(21); // returns 27
 
 Follow these steps for completing your project.
 
-- [ ] Submit a pull request to merge <firstName-lastName> Branch into master (student's  Repo). **Please don't merge your own pull request**
-- [ ] Add your Team Lead as a reviewer on the pull request
-- [ ] Your Team Lead will count the project as complete by merging the branch back into master
+- [X] Submit a pull request to merge <firstName-lastName> Branch into master (student's  Repo). **Please don't merge your own pull request**
+- [X] Add your Team Lead as a reviewer on the pull request
+- [X] Your Team Lead will count the project as complete by merging the branch back into master
